@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Иван Иванов — личный сайт</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --border: #21262d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; gap: 24px; justify-content: center;
+    padding: 16px; background: rgba(13,17,23,.9); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--accent); }
+  section { max-width: 860px; margin: 0 auto; padding: 56px 20px; }
+  h1 { font-size: clamp(28px, 6vw, 44px); }
+  h2 { font-size: 26px; margin-bottom: 20px; color: var(--accent); }
+  .hero { text-align: center; padding: 90px 20px 60px; }
+  .hero p { color: var(--muted); font-size: 18px; max-width: 560px; margin: 14px auto 0; }
+  .avatar {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px; font-weight: 700; color: #fff; margin: 0 auto 18px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 16px;
+    opacity: 0; transform: translateY(18px); transition: all .6s ease;
+  }
+  .card.visible { opacity: 1; transform: none; }
+  .tags { margin-top: 10px; }
+  .tag {
+    display: inline-block; background: #1f6feb33; color: var(--accent);
+    border-radius: 20px; padding: 3px 12px; font-size: 13px; margin: 3px 6px 3px 0;
+  }
+  .links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .links a {
+    color: var(--accent); text-decoration: none; border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 18px; transition: background .2s;
+  }
+  .links a:hover { background: var(--card); }
+  footer { text-align: center; color: var(--muted); padding: 30px; border-top: 1px solid var(--border); }
+  /* ---- калькулятор ---- */
+  .calc { max-width: 640px; margin: 0 auto; }
+  .calc label { display: block; margin: 14px 0 4px; font-size: 14px; color: var(--muted); }
+  .calc input {
+    width: 100%; padding: 10px 12px; font-size: 16px;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+  .calc button {
+    margin-top: 18px; width: 100%; padding: 12px; font-size: 16px; cursor: pointer;
+    background: #238636; color: #fff; border: none; border-radius: 8px;
+  }
+  .calc button:disabled { background: #2ea04355; cursor: wait; }
+  .status { font-size: 13px; color: var(--muted); margin-top: 10px; }
+  #result { margin-top: 22px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--accent); }
+  .summary { margin-top: 14px; font-size: 16px; }
+  .summary b { color: #3fb950; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">Обо мне</a>
+  <a href="#projects">Проекты</a>
+  <a href="#app">Калькулятор</a>
+  <a href="#contacts">Контакты</a>
+</nav>
+
+<header class="hero">
+  <!-- Чтобы поставить фото, раскомментируйте строку ниже и положите photo.jpg рядом с index.html -->
+  <!-- <img class="avatar" src="photo.jpg" alt="Фото"> -->
+  <div class="avatar">ИИ</div>
+  <h1>Привет, я Иван Иванов</h1>
+  <p>Разработчик · энтузиаст Python · здесь я рассказываю о своих проектах</p>
+</header>
+
+<section id="about">
+  <h2>Обо мне</h2>
+  <div class="card">
+    <p>Привет! Меня зовут Иван. Я занимаюсь разработкой и люблю превращать идеи
+    в работающие вещи. Сейчас изучаю Python и веб-технологии, а этот сайт —
+    моя витрина: здесь я собираю проекты и эксперименты.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Проекты</h2>
+  <div class="card">
+    <h3>Калькулятор сложных процентов</h3>
+    <p>Python-приложение, работающее прямо на этой странице — считается, как
+    вырастет вклад с ежемесячными пополнениями. Ниже можно попробовать!</p>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Pyodide</span><span class="tag">Финансы</span></div>
+  </div>
+  <div class="card">
+    <h3>Название проекта</h3>
+    <p>Короткое описание: что это, какую задачу решает и что интересного внутри.</p>
+    <div class="tags"><span class="tag">Тег</span><span class="tag">Тег</span></div>
+  </div>
+</section>
+
+<section id="app">
+  <h2>Калькулятор вклада (настоящий Python в браузере)</h2>
+  <div class="card calc">
+    <p>Приложение написано на Python и выполняется в браузере через Pyodide —
+    JavaScript тут только рисует интерфейс.</p>
+    <label for="principal">Начальная сумма, ₽</label>
+    <input id="principal" type="number" value="100000" min="0" step="any">
+    <label for="rate">Годовая ставка, %</label>
+    <input id="rate" type="number" value="12" min="0" step="any">
+    <label for="years">Срок, лет</label>
+    <input id="years" type="number" value="5" min="1" max="50" step="1">
+    <label for="monthly">Пополнение в месяц, ₽</label>
+    <input id="monthly" type="number" value="5000" min="0" step="any">
+    <button id="run" disabled>Загрузка Python…</button>
+    <div class="status" id="status">Ждём загрузки Pyodide…</div>
+    <div id="result"></div>
+  </div>
+</section>
+
+<section id="contacts">
+  <h2>Контакты</h2>
+  <div class="card links">
+    <a href="mailto:you@example.com">Почта</a>
+    <a href="https://t.me/username">Telegram</a>
+    <a href="https://github.com/username">GitHub</a>
+    <a href="https://vk.com/username">ВКонтакте</a>
+  </div>
+</section>
+
+<footer>© 2026 Иван Иванов · Сделано с ❤ и Python</footer>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script>
+const PY_CODE = `
+import json
+
+def calc(principal, rate, years, monthly):
+    r = rate / 100 / 12
+    total = principal
+    invested = principal
+    rows = []
+    for year in range(1, years + 1):
+        for _ in range(12):
+            total = total * (1 + r) + monthly
+            invested += monthly
+        rows.append((year, round(total, 2), round(invested, 2), round(total - invested, 2)))
+    return json.dumps(rows)
+`;
+
+let pyodidePromise = null;
+async function getPyodide() {
+  if (!pyodidePromise) pyodidePromise = loadPyodide();
+  return pyodidePromise;
+}
+
+const btn = document.getElementById('run');
+const status = document.getElementById('status');
+
+async function init() {
+  try {
+    const py = await getPyodide();
+    py.runPython(PY_CODE);
+    btn.disabled = false;
+    btn.textContent = 'Рассчитать';
+    status.textContent = 'Python готов ✓';
+  } catch (e) {
+    status.textContent = 'Не удалось загрузить Pyodide: ' + e;
+  }
+}
+
+function money(x) {
+  return x.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₽';
+}
+
+btn.addEventListener('click', async () => {
+  const p = parseFloat(document.getElementById('principal').value) || 0;
+  const rate = parseFloat(document.getElementById('rate').value) || 0;
+  const years = Math.min(Math.max(parseInt(document.getElementById('years').value) || 1, 1), 50);
+  const m = parseFloat(document.getElementById('monthly').value) || 0;
+
+  btn.disabled = true;
+  try {
+    const py = await getPyodide();
+    py.globals.set('p', p);
+    py.globals.set('r', rate);
+    py.globals.set('y', years);
+    py.globals.set('m', m);
+    const rows = JSON.parse(py.runPython('calc(p, r, y, m)'));
+
+    const last = rows[rows.length - 1];
+    let html = '<table><tr><th>Год</th><th>Итого</th><th>Вложено</th><th>Проценты</th></tr>';
+    for (const [year, total, invested, profit] of rows) {
+      html += `<tr><td>${year}</td><td>${money(total)}</td><td>${money(invested)}</td><td>${money(profit)}</td></tr>`;
+    }
+    html += '</table>';
+    html += `<p class="summary">Через ${years} лет на счету: <b>${money(last[1])}</b> — из них проценты ${money(last[3])}.</p>`;
+    document.getElementById('result').innerHTML = html;
+  } catch (e) {
+    document.getElementById('result').innerHTML = '<p>Ошибка: ' + e + '</p>';
+  }
+  btn.disabled = false;
+});
+
+init();
+</script>
+</body>
+</html>
